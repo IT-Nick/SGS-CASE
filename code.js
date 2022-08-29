@@ -1,4 +1,3 @@
-let timeNow = new Date().toLocaleTimeString();
 
 let city = "";
 let workshop = "";
