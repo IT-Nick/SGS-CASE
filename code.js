@@ -10,8 +10,6 @@ function select1(s1, s2) {
   var s1 = document.getElementById(s1);
   var s2 = document.getElementById(s2);
 
-  console.log(s1);
-
   let optionArray = [];
 
   s2.innerHTML = "";
