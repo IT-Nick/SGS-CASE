@@ -1,134 +1,127 @@
+let timeNow = new Date().toLocaleTimeString();
 
-var timeNow = new Date().toLocaleTimeString();
-
-var city = "";
-var workshop = "";
-var employee = "";
-var team = "";
-var shift = "";
+let city = "";
+let workshop = "";
+let employee = "";
+let team = "";
+let shift = "";
 
 function select1(s1, s2) {
-    var s1 = document.getElementById(s1);
-    var s2 = document.getElementById(s2);
+  var s1 = document.getElementById(s1);
+  var s2 = document.getElementById(s2);
 
-    s2.innerHTML = "";
+  console.log(s1);
 
-    if(s1.value == "moscow") {
-        var optionArray = ['|Выберите цех', '1|Цех 1', '2|Цех 2'];
-        city = "Москва";
-    }
-    else if(s1.value == "spb") {
-        var optionArray = ['|Выберите цех', '3|Цех 3', '4|Цех 4'];
-        city = "Санкт-Петербург";
-    }
+  let optionArray = [];
 
-    for(var option in optionArray) {
-        var pair = optionArray[option].split("|");
-        var newoption = document.createElement("option");
-  
-        newoption.value = pair[0]
-        newoption.innerHTML = pair[1];
-        
-        s2.options.add(newoption);
-    }
+  s2.innerHTML = "";
+
+  if (s1.value === "moscow") {
+    optionArray = ["|Выберите цех", "1|Цех 1", "2|Цех 2"];
+    city = "Москва";
+  } else if (s1.value === "spb") {
+    optionArray = ["|Выберите цех", "3|Цех 3", "4|Цех 4"];
+    city = "Санкт-Петербург";
+  }
+
+  for (const option in optionArray) {
+    const pair = optionArray[option].split("|");
+    const newOption = document.createElement("option");
+
+    newOption.value = pair[0];
+    newOption.innerHTML = pair[1];
+
+    s2.options.add(newOption);
+  }
 }
 
 function select2(s1, s2) {
-    var s1 = document.getElementById(s1);
-    var s2 = document.getElementById(s2);
+  var s1 = document.getElementById(s1);
+  var s2 = document.getElementById(s2);
 
-    s2.innerHTML = "";
+  let optionArray = [];
 
-    if(s1.value == "1") {
-        var optionArray = ['Выберите сотрудника', 'Сотрудник 1', 'Сотрудник 2'];
-        workshop = "Цех 1";
-    }
-    else if(s1.value == "2") {
-        var optionArray = ['Выберите сотрудника', 'Сотрудник 3', 'Сотрудник 4'];
-        workshop = "Цех 2";
-    }
-    else if(s1.value == "3") {
-        var optionArray = ['Выберите сотрудника', 'Сотрудник 5', 'Сотрудник 6'];
-        workshop = "Цех 3";
-    }
-    else if(s1.value == "4") {
-        var optionArray = ['Выберите сотрудника', 'Сотрудник 7', 'Сотрудник 8'];
-        workshop = "Цех 4";
-    }
+  s2.innerHTML = "";
 
-    for(var option in optionArray) {
-        var newoption = document.createElement("option");
-  
-        newoption.value = optionArray[option];
-        newoption.innerHTML = optionArray[option];
-        
-        s2.options.add(newoption);
-    }
+  if (s1.value == "1") {
+    optionArray = ["Выберите сотрудника", "Сотрудник 1", "Сотрудник 2"];
+    workshop = "Цех 1";
+  } else if (s1.value == "2") {
+    optionArray = ["Выберите сотрудника", "Сотрудник 3", "Сотрудник 4"];
+    workshop = "Цех 2";
+  } else if (s1.value == "3") {
+    optionArray = ["Выберите сотрудника", "Сотрудник 5", "Сотрудник 6"];
+    workshop = "Цех 3";
+  } else if (s1.value == "4") {
+    optionArray = ["Выберите сотрудника", "Сотрудник 7", "Сотрудник 8"];
+    workshop = "Цех 4";
+  }
 
+  for (const option in optionArray) {
+    const newOption = document.createElement("option");
+
+    newOption.value = optionArray[option];
+    newOption.innerHTML = optionArray[option];
+
+    s2.options.add(newOption);
+  }
 }
 
 function select5() {
-    var hour = new Date().getHours();
-    var greeting;
+  let hour = new Date().getHours();
+  let greeting;
 
-    if (hour >= 5 && hour < 12)
-        greeting = "Бригада 1 (Утро)";
-    else if (hour >= 12 && hour < 18)
-        greeting = "Бригада 2 (День)";
-    else if (hour >= 18 && hour < 24)
-        greeting = "Бригада 3 (Вечер)";
-    else if (hour >= 0 && hour < 5)
-        greeting = "Бригада 4 (Ночь)";
-    
+  if (hour >= 5 && hour < 12) greeting = "Бригада 1 (Утро)";
+  else if (hour >= 12 && hour < 18) greeting = "Бригада 2 (День)";
+  else if (hour >= 18 && hour < 24) greeting = "Бригада 3 (Вечер)";
+  else if (hour >= 0 && hour < 5) greeting = "Бригада 4 (Ночь)";
 
-    document.getElementById("is1").innerHTML = greeting;
-    team = greeting;
+  const is1 = document.getElementById("is1");
+  is1.innerHTML = greeting;
+  team = greeting;
 }
 
 function select6() {
-    var hour = new Date().getHours();
-    var greeting;
+  let hour = new Date().getHours();
+  let greeting;
 
-    if (hour > 8 && hour < 20)
-        greeting = "Смена 1";
-    else
-        greeting = "Смена 2";
+  if (hour > 8 && hour < 20) greeting = "Смена 1";
+  else greeting = "Смена 2";
 
-    document.getElementById("is2").innerHTML = greeting;
-    shift = greeting;
+  const is2 = document.getElementById("is2");
+  is2.innerHTML = greeting;
+  shift = greeting;
 }
 
 select5();
 select6();
 
-var sel1 = document.getElementById("slct1");
-sel1.onchange = function() {
-    select1(this.id, 'slct2');
-}; 
+function onChangeHandler() {
+  const sel1 = document.getElementById("slct1");
+  const sel2 = document.getElementById("slct2");
+  sel1.onchange = () => select1("slct1", "slct2");
+  sel2.onchange = () => select2("slct2", "slct3");
+}
 
-var sel2 = document.getElementById("slct2");
-sel2.onchange = function() {
-    select2(this.id, 'slct3');
-}; 
-
+onChangeHandler();
 
 function createCookie(name, value, days) {
-    var expires;
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toGMTString();
-    }
-    else {
-        expires = "";
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
+  let expires = "";
+  if (days) {
+    let date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toGMTString();
+  } else {
+    expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
 }
 
+const submit = document.querySelector("#submit");
 
-document.querySelector("#submit").onclick = function() {
-    employee = document.getElementById("slct3").value;
-    var resultsArray = [city, workshop, employee, team, shift];
-    var json = JSON.stringify(resultsArray);
-    createCookie('mycookie', json, 3);
-}
+submit.addEventListener("click", () => {
+  employee = document.getElementById("slct3").value;
+  const resultsArray = [city, workshop, employee, team, shift];
+  const json = JSON.stringify(resultsArray);
+  createCookie("mycookie", json, 3);
+});
